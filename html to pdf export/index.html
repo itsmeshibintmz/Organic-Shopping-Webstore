@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+
+button
+{
+
+  background-color:#fff;
+  border:none;
+  cursor:pointer;
+}
+
+button:hover
+{
+
+  background-color:#fff;
+  border:none;
+  cursor:pointer;
+  color:green;
+}
+
+#pdfdiv
+{
+color:green;
+}
+</style>
+
+   <script type="text/javascript" src="jspdf.min.js"></script>
+  
+ <script type="text/javascript" src="jquery-git.js"></script>
+    
+  <style type="text/css">
+    
+  </style>
+
+  <title></title>
+
+<script type='text/javascript'>//<![CDATA[
+$(window).on('load', function() {
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#pdfview').click(function () {
+    doc.fromHTML($('#pdfdiv').html(), 15, 15, {
+        'width': 700,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('file.pdf');
+});
+});//]]> 
+
+</script>
+
+</head>
+
+<body>
+
+  <div id="pdfdiv">
+     <h3 style="color:green;">WWW.SANWEBCORNER.COM</h3>
+    <p>a pararaph</p>
+</div>
+<div id="editor"></div>
+<button id="pdfview">Download PDF</button>
+</body>
+</html>
+
